@@ -1,4 +1,5 @@
 import { COMMENT_CREATE, COMMENT_DELETE, COMMENT_LOAD, COMMENT_UPDATE } from "../action_types/action_types";
+import { loaderOn, loaderOff } from "./loader_action_creator";
 
 export const createComment = (id, text) => {
     return {
@@ -24,10 +25,14 @@ export const deleteComment = (id) => {
 
 export const loadComments = () => {
     return async dispatch => {
+        dispatch(loaderOn());
         const data = await fetch('https://jsonplaceholder.typicode.com/posts/1/comments').then(data => data.json());
-        dispatch({
-            type: COMMENT_LOAD,
-            payload: data
-        })
+        setTimeout(()=>{
+            dispatch({
+                type: COMMENT_LOAD,
+                payload: data
+            })
+            dispatch(loaderOff());
+        }, 2000 )
     }
 }

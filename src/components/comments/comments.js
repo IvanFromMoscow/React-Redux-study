@@ -20,7 +20,8 @@ const Comments = props => {
     }
     useEffect(() => {
         dispatch(loadComments());
-    }, [])
+    }, [dispatch])
+
     return (
     <div className="card-comments">
         <form onSubmit={handleSubmit} className="comments-item-create">
