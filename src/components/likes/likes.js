@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addLike, removeLike } from '../../redux/actions/action_creators';
+import { addLike, removeLike } from '../../redux/actions/action_creators/likes_action_creator';
 import './style.css'
 class Likes extends React.Component {
         
